@@ -47,6 +47,11 @@ public class AuthenticationServlet extends HttpServlet {
 		
 		String context = request.getContextPath(); 
 		
+		System.out.println("======================");
+		System.out.println("===>> context = " +context);
+		System.out.println("===>> acao = " +acao);
+		System.out.println("======================");
+		
 		if (acao.equals("/login")) {
 			if (usuario != null && usuario.validaPassword(password)) {
 				request.getSession().setAttribute("usuario", usuario);
@@ -57,7 +62,7 @@ public class AuthenticationServlet extends HttpServlet {
 			}
 		} else { /*logout*/
 			request.getSession().invalidate();
-			response.sendRedirect(context + "/login.html");
+			response.sendRedirect(context + "/login.jsp");
 		}
 		
 		

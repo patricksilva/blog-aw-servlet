@@ -11,8 +11,8 @@ public class ConnectionManager {
 	private static final String DATABASE = "blog-aw";
 	private static final String IP = "localhost";
 	private static final String STR_CON = "jdbc:mysql://" + IP + ":3306/" + DATABASE;
-	private static final String USER = "root";
-	private static final String PASSWORD = "root";
+	private static final String USER = "aw";
+	private static final String PASSWORD = "aw";
 
 	public static Connection getConexao() throws Exception {
 		Connection conn = null;
@@ -22,17 +22,17 @@ public class ConnectionManager {
 		return conn;
 	}
 
-	public static void closeAll(Connection conn) {
+	public static void closeAll(final Connection conn) {
 		try {
 			if (conn != null) {
 				conn.close();
 			}
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static void closeAll(Connection conn, Statement stmt, ResultSet rs) {
+	public static void closeAll(final Connection conn, final Statement stmt, final ResultSet rs) {
 		try {
 			if (conn != null || stmt != null) {
 				closeAll(conn, stmt);
@@ -40,12 +40,12 @@ public class ConnectionManager {
 			if (rs != null) {
 				rs.close();
 			}
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static void closeAll(Connection conn, Statement stmt) {
+	public static void closeAll(final Connection conn, final Statement stmt) {
 		try {
 			if (conn != null) {
 				closeAll(conn);
@@ -53,7 +53,7 @@ public class ConnectionManager {
 			if (stmt != null) {
 				stmt.close();
 			}
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 		}
 	}

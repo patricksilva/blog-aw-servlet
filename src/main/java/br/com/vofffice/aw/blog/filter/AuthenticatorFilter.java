@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import br.com.vofffice.aw.blog.domain.Usuario;
+import br.com.vofffice.aw.blog.domain.User;
 
 /**
  * Servlet Filter implementation class AuthenticatorFilter
@@ -29,7 +29,7 @@ public class AuthenticatorFilter implements Filter {
 		
 		HttpSession session = httpRequest.getSession();
 		
-		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		User usuario = (User) session.getAttribute("usuario");
 	
 		String origem = httpRequest.getServletPath();
 		

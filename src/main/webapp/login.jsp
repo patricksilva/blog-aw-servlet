@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,9 +10,9 @@
 
   <title>AlgaWorks</title>
 
-  <link rel="stylesheet" type="text/css" href="layout/stylesheets/vendors.min.css"/>
-  <link rel="stylesheet" type="text/css" href="layout/stylesheets/algaworks.min.css"/>
-  <link rel="stylesheet" type="text/css" href="layout/stylesheets/application.css"/>
+  <link rel="stylesheet" type="text/css" href="<c:url value="/layout/stylesheets/vendors.min.css"/>"></link>
+  <link rel="stylesheet" type="text/css" href="<c:url value="/layout/stylesheets/algaworks.min.css"/>"></link>
+  <link rel="stylesheet" type="text/css" href="<c:url value="/layout/stylesheets/application.css"/>"></link>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -60,7 +61,7 @@
 
   </div>
 
-  <script src="layout/javascripts/vendors.min.js"></script>
-  <script src="layout/javascripts/algaworks.min.js"></script>
+  <script src="<c:url value="/layout/javascripts/vendors.min.js"/>"></script>
+  <script src="<c:url value="/layout/javascripts/algaworks.min.js"/>"></script>
 </body>
 </html>

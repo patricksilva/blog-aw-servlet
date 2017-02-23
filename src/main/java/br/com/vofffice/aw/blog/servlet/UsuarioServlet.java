@@ -33,13 +33,14 @@ public class UsuarioServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserDao dao = new UserDaoMysql();
+	@Override
+	protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+		final UserDao dao = new UserDaoMysql();
 		
-		List<User> users = dao.findAll();
+		final List<User> users = dao.findAll();
 		request.setAttribute("users", users);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/userPages/list.jsp");
+		final RequestDispatcher dispatcher = request.getRequestDispatcher("/userPages/list.jsp");
 		dispatcher.forward(request, response);
 		
 	}
@@ -47,14 +48,15 @@ public class UsuarioServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String acao = request.getPathInfo();
+	@Override
+	protected void doPost(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+		final String acao = request.getPathInfo();
 		
-		UserDao dao = new UserDaoMysql();
+		final UserDao dao = new UserDaoMysql();
 		
-		String strId = request.getParameter("id");
-		Long id = Long.valueOf(strId);
-		User user = new User();
+		final String strId = request.getParameter("id");
+		final Long id = Long.valueOf(strId);
+		final User user = new User();
 		String destino = null;
 		List<User> users = new ArrayList<>();
 		
@@ -69,6 +71,7 @@ public class UsuarioServlet extends HttpServlet {
 				destino = "/userPages/list.jsp";
 				break;
 			case "/edit" :
+				request.setAttribute("userToUpdate", dao.getOne(id));
 
 				destino = "/userPages/form.jsp";
 				break;
@@ -76,6 +79,14 @@ public class UsuarioServlet extends HttpServlet {
 			case "/save" :
 				//salvar o usuario
 				//recupera os parametros do form
+				final String fullName = request.getParameter("fullNameToSave");
+				final String password = request.getParameter("passawordToSave");
+				final String username = request.getParameter("usernameToSave");
+				System.out.println(fullName + '#' + password + '#' + username);
+				user.setFullName(fullName);
+				user.setPassword(password);
+				user.setUsername(username);
+				dao.save(user);
 				
 				users = dao.findAll();
 				request.setAttribute("users", users);
@@ -84,7 +95,7 @@ public class UsuarioServlet extends HttpServlet {
 				break;
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(destino);
+		final RequestDispatcher dispatcher = request.getRequestDispatcher(destino);
 		dispatcher.forward(request, response);
 		
 	}

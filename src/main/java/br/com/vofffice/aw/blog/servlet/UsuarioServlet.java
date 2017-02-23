@@ -80,9 +80,10 @@ public class UsuarioServlet extends HttpServlet {
 				//salvar o usuario
 				//recupera os parametros do form
 				final String fullName = request.getParameter("fullNameToSave");
-				final String password = request.getParameter("passawordToSave");
+				final String password = request.getParameter("passwordToSave");
 				final String username = request.getParameter("usernameToSave");
 				System.out.println(fullName + '#' + password + '#' + username);
+				user.setId(id);
 				user.setFullName(fullName);
 				user.setPassword(password);
 				user.setUsername(username);

@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `blog_post`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `blog_post` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `text` TEXT NULL,
   `user_id` bigint(20) NOT NULL,
@@ -47,6 +47,10 @@ VALUES
 ('natan', 'natan123'),
 ('vinicius', 'vinicius123')
 ;
+
+INSERT INTO blog_post (title, text, user_id)
+VALUES
+('Hello World', 'First article posted', 4);
 
 COMMIT;
 

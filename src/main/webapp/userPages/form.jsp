@@ -80,7 +80,7 @@
 							<td class="table-pesq-produto-col-acoes">
 							
 								<div class="btn-group">
-									<button class="btn  btn-default btn-xs" onclick="$('#form').attr('action', '<c:url value="/user/save"/>?id=${userToUpdate.id}')">
+									<button type="submit" class="btn  btn-default btn-xs" onclick="$('#form').attr('action', '<c:url value="/user/save"/>?id=${userToUpdate.id}')">
 										<i class="fa  fa-save"></i>
 									</button>
 									
